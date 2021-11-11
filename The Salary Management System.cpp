@@ -62,10 +62,8 @@ class EMPLOYEE
  void LIST(void) ; 
  void SALARY_SLIP(void) ; 
  private : 
- void ADD_RECORD(int, char[], char[], char[], int, int, int, 
-char[], char, char, char, float, float) ; 
- void MODIFY_RECORD(int, char [], char [], char [], char [], 
-char, char, char, float, float) ; 
+ void ADD_RECORD(int, char[], char[], char[], int, int, int, char[], char, char, char, float, float) ; 
+ void MODIFY_RECORD(int, char [], char [], char [], char [], char, char, char, float, float) ; 
  void DELETE_RECORD(int) ; 
  int LASTCODE(void) ; 
  int CODEFOUND(int) ; 
@@ -301,9 +299,7 @@ void LINES :: CLEARDOWN(void)
 // THIS FUNCTION ADDS THE GIVEN DATA IN THE EMPLOYEE'S FILE 
 //********************************************************** 
  
-void EMPLOYEE :: ADD_RECORD(int ecode, char ename[26], char 
-eaddress[31], char ephone[10], int d, int m, int y, char edesig[16], char egrade, 
-char ehouse, char econv, float eloan, float ebasic) 
+void EMPLOYEE :: ADD_RECORD(int ecode, char ename[26], char eaddress[31], char ephone[10], int d, int m, int y, char edesig[16], char egrade, char ehouse, char econv, float eloan, float ebasic) 
 { 
  fstream file ; 
  file.open("EMPLOYEE.DAT", ios::app) ; 
@@ -331,8 +327,7 @@ char ehouse, char econv, float eloan, float ebasic)
 //********************************************************** 
  
 void EMPLOYEE :: MODIFY_RECORD(int ecode, char ename[26], char 
-eaddress[31], char ephone[10], char edesig[16], char egrade, char ehouse, char 
-econv, float eloan, float ebasic) 
+eaddress[31], char ephone[10], char edesig[16], char egrade, char ehouse, char econv, float eloan, float ebasic) 
 { 
  int recno ; 
  recno = RECORDNO(ecode) ; 
@@ -467,12 +462,9 @@ void EMPLOYEE :: LIST(void)
  gotoxy(30,3) ; 
  cout <<"~~~~~~~~~~~~~~~~~~~" ; 
  gotoxy(1,4) ; 
- cout <<"CODE NAME PHONE DOJ DESIGNATION 
-GRADE SALARY" ; 
+ cout <<"CODE NAME PHONE DOJ DESIGNATION GRADE SALARY" ; 
  gotoxy(1,5) ; 
- cout 
-<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~" ; 
+ cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ; 
  fstream file ; 
  file.open("EMPLOYEE.DAT", ios::in) ; 
  file.seekg(0,ios::beg) ; 
@@ -518,12 +510,9 @@ GRADE SALARY" ;
  gotoxy(30,3) ; 
  cout <<"~~~~~~~~~~~~~~~~~~~" ; 
  gotoxy(1,4) ; 
- cout <<"CODE NAME PHONE DOJ 
-DESIGNATION GRADE SALARY" ; 
+ cout <<"CODE NAME PHONE DOJ DESIGNATION GRADE SALARY" ; 
  gotoxy(1,5) ; 
- cout 
-<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~" ; 
+ cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ; 
  } 
  else 
  row++ ; 
@@ -642,8 +631,7 @@ void EMPLOYEE :: NEW_EMPLOYEE(void)
  ecode = LASTCODE() + 1 ; 
  if (ecode == 1) 
  { 
- ADD_RECORD(ecode, "null", "null", "null", 0, 0, 0, "null", 'n', 'n', 'n', 
-0.0, 0.0) ; 
+ ADD_RECORD(ecode, "null", "null", "null", 0, 0, 0, "null", 'n', 'n', 'n', 0.0, 0.0) ; 
  DELETE_RECORD(ecode) ; 
  } 
  gotoxy(21,5) ; 
@@ -688,14 +676,12 @@ void EMPLOYEE :: NEW_EMPLOYEE(void)
  { 
  valid = 1 ; 
  gotoxy(5,25) ; clreol() ; 
- cout <<"Enter Phone no. of the Employee or Press <ENTER> for 
-none" ; 
+ cout <<"Enter Phone no. of the Employee or Press <ENTER> for none" ; 
  gotoxy(20,9) ; clreol() ; 
  gets(ephone) ; 
  if (ephone[0] == '0') 
  return ; 
- if ((strlen(ephone) < 7 && strlen(ephone) > 0) || (strlen(ephone) > 
-9)) 
+ if ((strlen(ephone) < 7 && strlen(ephone) > 0) || (strlen(ephone) > 9)) 
  { 
  valid = 0 ; 
  gotoxy(5,25) ; clreol() ; 
@@ -803,8 +789,7 @@ none" ;
  do 
  { 
  gotoxy(5,25) ; clreol() ; 
- cout <<"ENTER IF HOUSE ALLOWANCE IS ALLOTED TO 
-EMPLOYEE OR NOT" ; 
+ cout <<"ENTER IF HOUSE ALLOWANCE IS ALLOTED TO EMPLOYEE OR NOT" ; 
  gotoxy(22,19) ; clreol() ; 
  ehouse = getche() ; 
  ehouse = toupper(ehouse) ; 
@@ -814,8 +799,7 @@ EMPLOYEE OR NOT" ;
  do 
  { 
  gotoxy(5,25) ; clreol() ; 
- cout <<"ENTER IF CONVENCE ALLOWANCE IS ALLOTED 
-TO EMPLOYEE OR NOT" ; 
+ cout <<"ENTER IF CONVENCE ALLOWANCE IS ALLOTED TO EMPLOYEE OR NOT" ; 
  gotoxy(22,20) ; clreol() ; 
  econv = getche() ; 
  econv = toupper(econv) ; 
@@ -874,8 +858,7 @@ TO EMPLOYEE OR NOT" ;
  } while (ch != 'Y' && ch != 'N') ; 
  if (ch == 'N') 
  return ; 
- ADD_RECORD(ecode, ename, eaddress, ephone, d, m, y, edesig, egrade, 
-ehouse, econv, eloan, ebasic) ; 
+ ADD_RECORD(ecode, ename, eaddress, ephone, d, m, y, edesig, egrade, ehouse, econv, eloan, ebasic) ; 
 } 
  
  
@@ -995,8 +978,7 @@ void EMPLOYEE :: MODIFICATION(void)
  { 
  valid = 1 ; 
  gotoxy(5,25) ; clreol() ; 
- cout <<"Enter the name of the Employee or <ENTER> FOR NO 
-CHANGE" ; 
+ cout <<"Enter the name of the Employee or <ENTER> FOR NO CHANGE" ; 
  gotoxy(20,7) ; clreol() ; 
  gets(ename) ; 
  strupr(ename) ; 
@@ -1020,8 +1002,7 @@ CHANGE" ;
  { 
  valid = 1 ; 
  gotoxy(5,25) ; clreol() ; 
- cout <<"Enter Address of the Employee or <ENTER> FOR NO 
-CHANGE" ; 
+ cout <<"Enter Address of the Employee or <ENTER> FOR NO CHANGE" ; 
  gotoxy(20,8) ; clreol() ; 
  gets(eaddress) ; 
  strupr(eaddress) ; 
@@ -1045,8 +1026,7 @@ CHANGE" ;
  { 
  valid = 1 ; 
  gotoxy(5,25) ; clreol() ; 
- cout <<"Enter Phone no. of the Employee or or <ENTER> FOR NO 
-CHANGE" ; 
+ cout <<"Enter Phone no. of the Employee or or <ENTER> FOR NO CHANGE" ; 
  gotoxy(20,9) ; clreol() ; 
  gets(ephone) ; 
  if (ephone[0] == '0') 
@@ -1070,8 +1050,7 @@ CHANGE" ;
  { 
  valid = 1 ; 
  gotoxy(5,25) ; clreol() ; 
- cout <<"Enter Designation of the Employee or <ENTER> FOR NO 
-CHANGE" ; 
+ cout <<"Enter Designation of the Employee or <ENTER> FOR NO CHANGE" ; 
  gotoxy(20,10) ; clreol() ; 
  gets(edesig) ; 
  strupr(edesig) ; 
@@ -1094,8 +1073,7 @@ CHANGE" ;
  do 
  { 
  gotoxy(5,25) ; clreol() ; 
- cout <<"Enter Grade of the Employee (A,B,C,D,E) or <ENTER> FOR 
-NO CHANGE" ; 
+ cout <<"Enter Grade of the Employee (A,B,C,D,E) or <ENTER> FOR NO CHANGE" ; 
  gotoxy(20,11) ; clreol() ; 
  egrade = getche() ; 
  egrade = toupper(egrade) ; 
@@ -1119,8 +1097,7 @@ NO CHANGE" ;
  do 
  { 
  gotoxy(5,25) ; clreol() ; 
- cout <<"ALLOTED HOUSE ALLOWANCE ? or <ENTER> FOR 
-NO CHANGE" ; 
+ cout <<"ALLOTED HOUSE ALLOWANCE ? or <ENTER> FOR NO CHANGE" ; 
  gotoxy(22,12) ; clreol() ; 
  ehouse = getche() ; 
  ehouse = toupper(ehouse) ; 
@@ -1136,8 +1113,7 @@ NO CHANGE" ;
  do 
  { 
  gotoxy(5,25) ; clreol() ; 
- cout <<"ALLOTED CONVENCE ALLOWANCE or <ENTER> 
-FOR NO CHANGE" ; 
+ cout <<"ALLOTED CONVENCE ALLOWANCE or <ENTER> FOR NO CHANGE" ; 
  gotoxy(22,13) ; clreol() ; 
  econv = getche() ; 
  econv = toupper(econv) ; 
@@ -1180,8 +1156,7 @@ FOR NO CHANGE" ;
  { 
  valid = 1 ; 
  gotoxy(5,25) ; clreol() ; 
- cout <<"ENTER BASIC SALARY or <ENTER> FOR NO 
-CHANGE" ; 
+ cout <<"ENTER BASIC SALARY or <ENTER> FOR NO CHANGE" ; 
  gotoxy(22,15) ; clreol() ; 
  gets(t1) ; 
  t2 = atof(t1) ; 
@@ -1215,8 +1190,7 @@ CHANGE" ;
  } while (ch != 'Y' && ch != 'N') ; 
  if (ch == 'N') 
  return ; 
- MODIFY_RECORD(ecode,ename,eaddress,ephone,edesig,egrade,ehouse,e
-conv,eloan,ebasic) ; 
+ MODIFY_RECORD(ecode,ename,eaddress,ephone,edesig,egrade,ehouse,econv,eloan,ebasic) ; 
  gotoxy(5,23) ; 
  cout <<"\7Record Modified" ; 
  gotoxy(5,25) ; 
@@ -1289,8 +1263,7 @@ int EMPLOYEE :: VALID_DATE(int d1, int m1, int y1)
  if (d1>31 || d1<1) 
  valid = 0 ; 
  else 
- if (((y1%4)!=0 && m1==2 && d1>28) || ((y1%4)==0 && m1==2 && 
-d1>29)) 
+ if (((y1%4)!=0 && m1==2 && d1>28) || ((y1%4)==0 && m1==2 && d1>29)) 
  valid = 0 ; 
  else 
  if ((m1==4 || m1==6 || m1==9 || m1==11) && d1>30) 
@@ -1342,8 +1315,7 @@ void EMPLOYEE :: SALARY_SLIP(void)
  m1 = d.da_mon ; 
  y1 = d.da_year ; 
  char 
-*mon[12]={"January","February","March","April","May","June","July","August","
-September","November","December"} ; 
+*mon[12]={"January","February","March","April","May","June","July","August","September","November","December"} ; 
  LINES L ; 
  L.BOX(2,1,79,25,219) ; 
  gotoxy(31,2) ; 
